@@ -12,7 +12,7 @@ const HomePage: React.FC = () => {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const response = await axios.get(
+        const response = await axios.get<Array<News>>(
           `${process.env.NEXT_PUBLIC_API_URL}/news`
         )
         setNews(response.data)

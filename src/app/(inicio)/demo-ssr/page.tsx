@@ -6,6 +6,8 @@ import axios from 'axios'
 import NewsList from '@/components/NewsList'
 import { News } from '@/types/News'
 
+export const revalidate = 60
+
 async function fetchNews() {
   const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/news`)
   return response.data
