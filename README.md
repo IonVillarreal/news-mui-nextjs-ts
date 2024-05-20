@@ -64,7 +64,7 @@ my-news-app/
 3. Crea un archivo `.env.local` en la raíz del proyecto y añade la siguiente variable:
 
    ```plaintext
-   NEXT_PUBLIC_API_URL=http://localhost:3000
+   NEXT_PUBLIC_BASE_URL=http://localhost:3000
    ```
 
 ### Ejecución en Desarrollo

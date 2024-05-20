@@ -4,6 +4,8 @@ import { useState } from 'react'
 import { Box, Button, Card, Grid, Typography } from '@mui/material'
 import { FormInputText } from '../../../components/form'
 import ProgresoLineal from '../../../components/progreso/ProgresoLineal'
+import { WebService } from '../../../services'
+import { Constantes } from '../../../config'
 
 export interface LoginType {
   usuario: string
@@ -18,7 +20,14 @@ const LoginContainer = () => {
   const [loading, setLoading] = useState<boolean>(false)
 
   const iniciarSesion = async ({ usuario, contrasena }: LoginType) => {
-    console.log(usuario, contrasena)
+    setLoading(true)
+    const response = await WebService.post({
+      url: Constantes.baseUrl ?? '',
+      body: { username: usuario, password: contrasena },
+    })
+    setLoading(false)
+
+    console.log(response)
   }
 
   return (
