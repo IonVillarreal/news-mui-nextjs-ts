@@ -1,4 +1,4 @@
-// src/app/layout.tsx
+'use client'
 
 import React, { PropsWithChildren } from 'react'
 import { AppBar, Toolbar, Typography, Container, Button } from '@mui/material'
@@ -12,11 +12,14 @@ const Layout: React.FC<PropsWithChildren> = ({ children }) => {
           <Typography variant="h6" style={{ flexGrow: 1 }}>
             Mi Aplicación de Noticias
           </Typography>
-          <Button color="primary" component={Link} href="/inicio">
+          <Button color="primary" component={Link} href="/">
             Inicio
           </Button>
-          <Button color="primary" component={Link} href="/inicio/about">
+          <Button color="primary" component={Link} href="/about">
             Acerca de
+          </Button>
+          <Button color="primary" component={Link} href="/login">
+            Ingresar
           </Button>
         </Toolbar>
       </AppBar>

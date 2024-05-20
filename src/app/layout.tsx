@@ -1,10 +1,11 @@
-import * as React from 'react'
+'use client'
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter'
 import { ThemeProvider } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
-import theme from '@/theme'
+import theme from '../theme'
+import { ReactNode } from 'react'
 
-export default function RootLayout(props: { children: React.ReactNode }) {
+export default function RootLayout(props: { children: ReactNode }) {
   return (
     <html lang="en">
       <body>
