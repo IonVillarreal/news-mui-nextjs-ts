@@ -1,45 +1,129 @@
-# Material UI - Next.js App Router example in TypeScript
+# Demo - Aplicación de Noticias
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped using [`create-next-app`](https://github.com/vercel/next.js/tree/HEAD/packages/create-next-app) with Material UI installed.
+Una aplicación de noticias de tecnología construida con Next.js, TypeScript y Material-UI, utilizando el App Router para la renderización del lado del servidor (SSR) y la revalidación de páginas desde el backend.
 
-## How to use
+## Características
 
-Download the example [or clone the repo](https://github.com/mui/material-ui):
+- Renderización del lado del servidor (SSR) para una carga rápida y SEO optimizado.
+- Actualización periódica de noticias en el cliente.
+- Revalidación de páginas desde el backend.
+- Uso de Material-UI para una interfaz de usuario moderna y responsiva.
+- Uso de imágenes optimizadas con `next/image`.
 
-<!-- #default-branch-switch -->
+## Estructura del Proyecto
 
-```bash
-curl https://codeload.github.com/mui/material-ui/tar.gz/next | tar -xz --strip=2  material-ui-next/examples/material-ui-nextjs-ts
-cd material-ui-nextjs-ts
+```plaintext
+my-news-app/
+├── public/
+├── src/
+│   ├── app/
+│   │   ├── about/
+│   │   │   └── page.tsx
+│   │   ├── api/
+│   │   │   └── news/
+│   │   │       └── route.ts
+│   │   ├── revalidate/
+│   │   │   └── route.ts
+│   │   └── page.tsx
+│   ├── components/
+│   │   └── NewsList.tsx
+│   ├── styles/
+│   ├── types/
+│   │   └── News.ts
+├── .gitignore
+├── package.json
+├── tsconfig.json
+├── next.config.js
+└── README.md
 ```
 
-Install it and run:
+## Configuración del Proyecto
+
+### Requisitos
+
+- Node.js
+- npm o yarn
+
+### Instalación
+
+1. Clona el repositorio:
+
+   ```bash
+   git clone git@github.com:IonVillarreal/news-mui-nextjs-ts.git
+   ```
+
+2. Instala las dependencias:
+
+   ```bash
+   cd news-mui-nextjs
+   npm install
+   # o
+   yarn install
+   ```
+
+3. Crea un archivo `.env.local` en la raíz del proyecto y añade la siguiente variable:
+
+   ```plaintext
+   NEXT_PUBLIC_API_URL=http://localhost:3000
+   ```
+
+### Ejecución en Desarrollo
 
 ```bash
-npm install
 npm run dev
+# o
+yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abre [http://localhost:3000](http://localhost:3000) en tu navegador para ver la aplicación.
 
-or:
+### Configuración de Imágenes
 
-<!-- #default-branch-switch -->
+Asegúrate de que tu archivo `next.config.js` permite la carga de imágenes desde "picsum.photos":
 
-[![Edit on StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/mui/material-ui/tree/next/examples/material-ui-nextjs-ts)
+```javascript
+// next.config.js
 
-[![Edit on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/p/sandbox/github/mui/material-ui/tree/next/examples/material-ui-nextjs-ts)
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  swcMinify: true,
+  images: {
+    domains: ['picsum.photos'],
+  },
+}
 
-## Learn more
+module.exports = nextConfig
+```
 
-To learn more about this example:
+## API Endpoints
 
-- [Next.js documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Customizing Material UI](https://mui.com/material-ui/customization/how-to-customize/) - approaches to customizing Material UI.
+Disponible en [https://github.com/IonVillarreal/node-prisma-notas](https://github.com/IonVillarreal/node-prisma-notas)
 
-## What's next?
+### Obtener Noticias
 
-<!-- #default-branch-switch -->
+Endpoint: `/api/news`
 
-You now have a working example project.
-You can head back to the documentation and continue by browsing the [templates](https://next.mui.com/material-ui/getting-started/templates/) section.
+Método: `GET`
+
+Descripción: Devuelve un array de objetos de noticias.
+
+## Componentes
+
+### Componente `NewsList`
+
+Ubicación: `src/app/components/NewsList.tsx`
+
+Descripción: Renderiza una lista de noticias en formato de tarjetas.
+
+### Página Principal
+
+Ubicación: `src/app/page.tsx`
+
+Descripción: Renderiza la página principal con noticias de tecnología utilizando SSR y actualización periódica en el cliente.
+
+### Página "Acerca de"
+
+Ubicación: `src/app/about/page.tsx`
+
+Descripción: Renderiza una página sencilla con información sobre la aplicación.
