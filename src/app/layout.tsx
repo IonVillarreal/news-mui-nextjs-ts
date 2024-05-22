@@ -7,7 +7,7 @@ import { ReactNode } from 'react'
 
 export default function RootLayout(props: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="es">
       <body>
         <AppRouterCacheProvider options={{ enableCssLayer: true }}>
           <ThemeProvider theme={theme}>
