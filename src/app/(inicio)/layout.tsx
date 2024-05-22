@@ -9,7 +9,11 @@ const Layout: React.FC<PropsWithChildren> = ({ children }) => {
     <>
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h6" style={{ flexGrow: 1 }}>
+          <Typography
+            variant="h6"
+            style={{ flexGrow: 1 }}
+            color={'text.primary'}
+          >
             Mi Aplicación de Noticias
           </Typography>
           <Button color="primary" component={Link} href="/">

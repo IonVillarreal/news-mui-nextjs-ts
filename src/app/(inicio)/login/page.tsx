@@ -6,6 +6,8 @@ import { FormInputText } from '../../../components/form'
 import ProgresoLineal from '../../../components/progreso/ProgresoLineal'
 import { WebService } from '../../../services'
 import { Constantes } from '../../../config'
+import { guardarCookie } from '../../../utils/cookies'
+import { useRouter } from 'next/navigation'
 
 export interface LoginType {
   usuario: string
@@ -18,16 +20,26 @@ const LoginContainer = () => {
   })
 
   const [loading, setLoading] = useState<boolean>(false)
+  const router = useRouter()
 
   const iniciarSesion = async ({ usuario, contrasena }: LoginType) => {
-    setLoading(true)
-    const response = await WebService.post({
-      url: Constantes.baseUrl ?? '',
-      body: { username: usuario, password: contrasena },
-    })
-    setLoading(false)
+    try {
+      setLoading(true)
+      const response = await WebService.post({
+        url: `${Constantes.baseUrl}/auth/login` ?? '',
+        body: { username: usuario, password: contrasena },
+      })
 
-    console.log(response)
+      guardarCookie('token', response.token)
+
+      router.replace('/admin/home')
+
+      console.log(response)
+    } catch (error) {
+      console.log(error)
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
