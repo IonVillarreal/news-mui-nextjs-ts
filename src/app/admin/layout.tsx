@@ -1,5 +1,4 @@
 'use client'
-
 import React, { PropsWithChildren } from 'react'
 import { AppBar, Button, Container, Toolbar, Typography } from '@mui/material'
 import { eliminarCookie } from '../../utils/cookies'

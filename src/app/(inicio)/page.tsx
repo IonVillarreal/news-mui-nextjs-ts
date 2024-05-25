@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import { Container, Typography } from '@mui/material'
-import NewsList from '../../components/NewsList'
+import NewsList from './ui/NewsList'
 import { News } from '../../types/News'
 import axios from 'axios'
 

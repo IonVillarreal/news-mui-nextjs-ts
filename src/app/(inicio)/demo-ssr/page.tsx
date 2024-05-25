@@ -1,10 +1,8 @@
-//'use server'
 import React from 'react'
 import { Container, Typography } from '@mui/material'
 
 import axios from 'axios'
-import NewsList from '@/components/NewsList'
-import { News } from '@/types/News'
+import NewsList from '../ui/NewsList'
 
 export const revalidate = 60
 

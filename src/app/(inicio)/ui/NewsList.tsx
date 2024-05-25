@@ -1,5 +1,6 @@
+'use client'
 import React from 'react'
-import { News } from '../types/News'
+import { News } from '../../../types/News'
 import {
   Card,
   CardContent,
@@ -8,18 +9,25 @@ import {
   CardActionArea,
 } from '@mui/material'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 
 interface NewsListProps {
   news: News[]
 }
 
 const NewsList: React.FC<NewsListProps> = ({ news }) => {
+  const router = useRouter()
+
   return (
     <Grid container spacing={2}>
       {news.map((item) => (
         <Grid item xs={12} sm={6} md={4} key={item.id}>
           <Card>
-            <CardActionArea>
+            <CardActionArea
+              onClick={(event) => {
+                router.push(`/news/${item.id}`)
+              }}
+            >
               <Image
                 src={`https://picsum.photos/200/100?random=${item.id}`}
                 alt={item.title}

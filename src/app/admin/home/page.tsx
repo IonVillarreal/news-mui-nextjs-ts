@@ -1,5 +1,5 @@
 'use client'
-import { redirect } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { eliminarCookie, leerCookie } from '../../../utils/cookies'
 import { WebService } from '../../../services'
@@ -7,13 +7,14 @@ import { Constantes } from '../../../config'
 import { imprimir } from '../../../utils/imprimir'
 import {
   Box,
-  Button,
   Card,
   CardContent,
   CircularProgress,
   Container,
+  Grid,
   Typography,
 } from '@mui/material'
+import NewsListAdmin from './ui/NewsListAdmin'
 
 export interface userType {
   id: number
@@ -22,6 +23,7 @@ export interface userType {
 
 const AdminHomePage = () => {
   const [user, setUser] = useState<userType | null>(null)
+  const router = useRouter()
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -38,41 +40,26 @@ const AdminHomePage = () => {
         setUser(response)
       } catch (error) {
         eliminarCookie('token')
-        console.error('Error fetching user:', error)
-        redirect('/login')
+        router.replace('/login')
       }
     }
 
     fetchUser()
   }, [])
 
-  useEffect(() => {
-    console.log('user: ', user)
-  }, [user])
-
   return (
-    <Container maxWidth="sm" style={{ marginTop: '2rem' }}>
+    <Container maxWidth="md" style={{ marginTop: '2rem' }}>
       {user ? (
         <Card>
           <CardContent>
-            <Typography variant="h4" component="h1" gutterBottom>
-              Página de Administrador
-            </Typography>
-            <Typography variant="h6" component="p">
-              Bienvenido, {user.username}. Aquí puedes gestionar la aplicación.
-            </Typography>
-            <Box mt={2}>
-              <Button variant="contained" color="primary">
-                Gestionar Usuarios
-              </Button>
-              <Button
-                variant="contained"
-                color="secondary"
-                style={{ marginLeft: '1rem' }}
-              >
-                Ver Reportes
-              </Button>
-            </Box>
+            <Grid container>
+              <Grid item xs={6} sm={6} md={6}>
+                <Typography variant="h6" component="p" sx={{ pb: 1 }}>
+                  Bienvenido, {user.username}.
+                </Typography>
+              </Grid>
+            </Grid>
+            <NewsListAdmin />
           </CardContent>
         </Card>
       ) : (
