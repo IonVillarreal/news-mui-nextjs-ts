@@ -14,7 +14,7 @@ import {
   ListItemText,
   Typography,
 } from '@mui/material'
-import Image from 'next/image'
+import Image from "next/legacy/image"
 import { Icono } from '../../../../components/Icono'
 
 const DetalleNoticia = () => {

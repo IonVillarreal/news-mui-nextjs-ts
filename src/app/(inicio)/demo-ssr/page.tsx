@@ -11,7 +11,7 @@ async function fetchNews() {
   return response.data
 }
 
-const DemoSSRPage = async () => {
+export default async function DemoSSRPage() {
   const news = await fetchNews()
   return (
     <Container>
@@ -22,5 +22,3 @@ const DemoSSRPage = async () => {
     </Container>
   )
 }
-
-export default DemoSSRPage

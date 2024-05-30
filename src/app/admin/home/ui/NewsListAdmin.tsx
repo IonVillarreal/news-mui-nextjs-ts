@@ -8,7 +8,7 @@ import {
   Grid,
   Typography,
 } from '@mui/material'
-import Image from 'next/image'
+import Image from "next/legacy/image"
 import { IconoTooltip } from '../../../../components/botones/IconoTooltip'
 import { WebService } from '../../../../services'
 import { CustomDialog } from '../../../../components/dialog/CustomDialog'

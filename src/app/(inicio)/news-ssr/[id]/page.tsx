@@ -6,11 +6,11 @@ import ClientComponent from './ClientComponent'
 
 type Props = {
   params: {
-    newsId: string
+    id: string
   }
 }
 
-export async function fetchNews(newsId: string): Promise<News> {
+const fetchNews = async (newsId: string): Promise<News> => {
   const response = await WebService.get({
     url: `${Constantes.baseUrl}/news/${newsId}`,
   })
@@ -19,7 +19,8 @@ export async function fetchNews(newsId: string): Promise<News> {
 }
 
 const DetalleNoticia = async ({ params }: Props) => {
-  const news = await fetchNews(params.newsId)
+  imprimir(`params: `, params)
+  const news = await fetchNews(params.id)
 
   return <ClientComponent news={news} />
 }

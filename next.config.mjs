@@ -5,7 +5,7 @@ const nextConfig = {
       'picsum.photos',
     ],
   },
-  reactStrictMode: false
+  reactStrictMode: false,
 }
 
 export default nextConfig
